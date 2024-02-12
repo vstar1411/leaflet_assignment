@@ -44,7 +44,6 @@ const RenderLeafletComponent = () => {
   useEffect(() => {
     if (mpp !== null && scaleBarLength !== null) {
       const scale = Math.pow(2, (maxNativeZoom - mapRef.current.getZoom()));
-      console.log(scale);
       const displayMpp = mpp / scale;
       const scaleBarValue = displayMpp * scaleBarLength;
       setScaleBarValue(scaleBarValue);
@@ -118,7 +117,7 @@ const MapEventsHandler = ({ setStartPoint, setEndPoint, startPoint, endPoint, ma
       }
     });
   
-    return null; // No rendering needed for this component
+    return null; 
   };
 
 export default RenderLeafletComponent;

@@ -1,6 +1,6 @@
 import L from "leaflet";
 export const drawLineBetweenPoints = (map, startPoint, endPoint, mpp,  zoom, maxZoom ) => {
-    // Check if startPoint and endPoint are valid
+
     if (!startPoint || !endPoint) return;
   
     // Remove existing polyline if any
@@ -14,15 +14,14 @@ export const drawLineBetweenPoints = (map, startPoint, endPoint, mpp,  zoom, max
 
     const distance = calculateDistance(startPoint, endPoint, zoom, maxZoom, mpp);
 
-    // Add distance to popup
+    // Add distance to Tooltip
     polyline.bindTooltip(`Distance: ${distance.toFixed(4)}`).openTooltip();
   };
 
   export const calculateDistance = (startPoint, endPoint, zoom, maxNativeZoom, mpp) => {
     // Calculate scale
     const scale = Math.pow(2, (maxNativeZoom - zoom));
-    console.log(startPoint);
-    console.log(endPoint);
+
     // Apply scale to coordinates
     const start_x = startPoint.lat * scale;
     const start_y = startPoint.lng * scale;
@@ -31,7 +30,7 @@ export const drawLineBetweenPoints = (map, startPoint, endPoint, mpp,  zoom, max
   
     // Calculate distance
     const distance = Math.sqrt((start_x - end_x) ** 2 + (start_y - end_y) ** 2) * mpp;
-    console.log(distance);
+
   
     return distance;
   };
