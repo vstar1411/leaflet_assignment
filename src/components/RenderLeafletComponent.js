@@ -43,7 +43,7 @@ const RenderLeafletComponent = () => {
 
   useEffect(() => {
     if (mpp !== null && scaleBarLength !== null) {
-      const scale = Math.pow(2, (maxNativeZoom - mapRef.current.getZoom()));
+      const scale = 1/(Math.pow(2, (maxNativeZoom - mapRef.current.getZoom())));
       const displayMpp = mpp / scale;
       const scaleBarValue = displayMpp * scaleBarLength;
       setScaleBarValue(scaleBarValue);
@@ -55,7 +55,7 @@ const RenderLeafletComponent = () => {
     if (!map) return;
 
     const handleZoomEnd = () => {
-      const scale = Math.pow(2, (map.getMaxZoom() - map.getZoom()));
+      const scale = 1/(Math.pow(2, (maxNativeZoom - mapRef.current.getZoom())));
       const displayMpp = mpp / scale;
       const scaleBarValue = displayMpp * scaleBarLength;
       setScaleBarValue(scaleBarValue);

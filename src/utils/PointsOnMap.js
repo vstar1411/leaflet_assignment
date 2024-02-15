@@ -20,7 +20,7 @@ export const drawLineBetweenPoints = (map, startPoint, endPoint, mpp,  zoom, max
 
   export const calculateDistance = (startPoint, endPoint, zoom, maxNativeZoom, mpp) => {
     // Calculate scale
-    const scale = Math.pow(2, (maxNativeZoom - zoom));
+    const scale = 1/(Math.pow(2, (maxNativeZoom - zoom)));
 
     // Apply scale to coordinates
     const start_x = startPoint.lat * scale;
